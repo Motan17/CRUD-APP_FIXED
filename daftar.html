@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD SISWA</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'><link rel="stylesheet" href="./style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div id="large-header" class="large-header">
+  <canvas id="demo-canvas"></canvas>
+ 
+ 
+ 
+
+</head>
+
+
+<body>
+<center><h1 class="text">DATA SISWA</h1></center>
+
+<div id="app">
+  <div class="container">
+ 
+    <br>
+	
+	 <center><div class=" no-printme"><p class="text2">Silahkan isi data siswa : </p></div></center> </br>
+    <div class="form-inline no-printme" action="#">
+	
+    <input type="text" id="form-nama" v-model="item.nama" placeholder="nama" class="form-control" required> 
+    <input type="number" v-model="item.umur" placeholder="umur" class="form-control" v-on:keyup.enter="addItem"required>
+	<input type="text" id="form-kelas" v-model="item.kelas" placeholder="kelas" class="form-control" required> 
+    <input type="number" v-model="item.nilai" placeholder="nilai dalam /100" class="form-control" v-on:keyup.enter="addItem"required>
+    <button @click="addItem" class="btn btn-dark"><i class="fas fa-plus"></i></button>
+      </div>
+      </td>
+    <br><br>
+    <table class="table table-striped table-bordered table-sm css-serial">
+	
+	
+      <thead class="thead-light">
+	 <th align="center"><b><center>NO</center></b></th>  
+        <th>Nama</th>
+        <th align="center"><center>Umur</center></th>
+		<th align="center"><center>Kelas</center></th>
+		<th align="center" ><center>Nilai</center></th>
+     <th class="col-2"><div class=" no-printme"><center>Edit/Del</center></div></th>
+      </thead>
+	  
+     <div class='no-printme'> <tr v-for="(item, index) in items">
+	 <td align="center"></td>
+        <td>
+          <input v-if="item.edit" type="text" v-model="item.nama"  v-on:keyup.enter="item.edit = !item.edit">
+          <span v-else>{{item.nama}} </span>
+        </td>
+       
+	    <td>
+          <input v-if="item.edit" type="text" v-model="item.umur" v-on:keyup.enter="item.edit = !item.edit">
+          <span v-else>{{item.umur}} tahun</span>
+        </td>
+		
+		 <td>
+          <input v-if="item.edit" type="text" v-model="item.kelas" v-on:keyup.enter="item.edit = !item.edit">
+          <span v-else>{{item.kelas}} </span>
+        </td>
+		
+		 <td>
+          <input v-if="item.edit" type="text" v-model="item.nilai" v-on:keyup.enter="item.edit = !item.edit">
+          <span v-else>{{item.nilai}} </span>
+        </td>
+
+        <td><div class=" no-printme"><button @click="item.edit = !item.edit" class="btn btn-info"><i class="far fa-edit"></i></button>
+          <button @click="removeItem(index)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></div></td>
+		
+      </tr></div>
+	  
+	  
+	 
+    </table>
+	<center><div class=" no-printme"><button onclick={window.print()}>Print Data</button></div></center>
+	
+  </div>
+</div> 
+
+<!--<input type="button" value="click"
+                    onclick="printDiv()">-->
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+<!--<center><button onclick="window.print();" class="noPrint">
+Print Me
+</button></center>-->
+</body>
+ 
+</html>
+
